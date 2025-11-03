@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HackClub Slovakia</title>
+    <link rel="icon" type="image/jpeg" href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Hack%20Club%20SK-DmYpWsyfaFR8aUUWbGhuyihuQhOnWB.jpg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-red: #ec3750;
+            --dark-bg: #1f2937;
+            --darker-bg: #111827;
+            --light-gray: #f3f4f6;
+            --text-dark: #1f2937;
+            --text-light: #ffffff;
+            --border-radius: 12px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--light-gray);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Header */
+        header {
+            background: var(--darker-bg);
+            color: var(--text-light);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            color: var(--primary-red);
+        }
+
+        .lang-toggle {
+            background: var(--primary-red);
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: transform 0.2s, opacity 0.3s;
+        }
+
+        .lang-toggle:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-red);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+            color: var(--text-light);
+            padding: 4rem 2rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            color: var(--text-light);
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-slogan {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary-red);
+            font-weight: 600;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary {
+            background: var(--primary-red);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--text-dark);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            color: var(--primary-red);
+            margin-bottom: 1rem;
+        }
+
+        /* Events */
+        .event-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary-red);
+        }
+
+        .event-date {
+            color: var(--primary-red);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .event-filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            border: 2px solid var(--primary-red);
+            background: white;
+            color: var(--primary-red);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active {
+            background: var(--primary-red);
+            color: white;
+        }
+
+        /* Projects */
+        .project-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .project-thumbnail {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-red), #ff6b6b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .project-links a {
+            color: var(--primary-red);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Form */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary-red);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Resources */
+        .resource-list {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+        }
+
+        .resource-item {
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .resource-item:last-child {
+            border-bottom: none;
+        }
+
+        .resource-tag {
+            background: var(--primary-red);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+        }
+
+        /* Chapters */
+        .chapter-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 1.5rem;
+        }
+
+        .chapter-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .chapter-city {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-red);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--darker-bg);
+            color: var(--text-light);
+            padding: 3rem 2rem 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--primary-red);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: var(--text-light);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-red);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: var(--primary-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #9ca3af;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-slogan {
+                font-size: 1.2rem;
+            }
+
+            nav {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .page-section {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        /* Search */
+        .search-box {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--primary-red);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #4b5563;
+            margin-bottom: 2rem;
+        }
+
+        .highlight-section {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Hack%20Club%20SK-DmYpWsyfaFR8aUUWbGhuyihuQhOnWB.jpg" alt="HackClub Slovakia Logo" class="logo">
+                <div class="logo-text">HackClub Slovakia</div>
+            </div>
+            <nav>
+                <a onclick="showPage('home')" data-en="Home" data-sk="Domov">Domov</a>
+                <a onclick="showPage('about')" data-en="About" data-sk="O nás">O nás</a>
+                <a onclick="showPage('chapters')" data-en="Chapters" data-sk="Pobočky">Pobočky</a>
+                <a onclick="showPage('events')" data-en="Events" data-sk="Podujatia">Podujatia</a>
+                <a onclick="showPage('projects')" data-en="Projects" data-sk="Projekty">Projekty</a>
+                <a onclick="showPage('get-involved')" data-en="Get Involved" data-sk="Zapoj sa">Zapoj sa</a>
+                <a onclick="showPage('resources')" data-en="Resources" data-sk="Zdroje">Zdroje</a>
+                <a onclick="showPage('contact')" data-en="Contact" data-sk="Kontakt">Kontakt</a>
+                <button class="lang-toggle" onclick="toggleLanguage()">🇬🇧 EN</button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- HOME PAGE -->
+        <div id="home" class="page-section">
+            <div class="hero">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Hack%20Club%20SK-DmYpWsyfaFR8aUUWbGhuyihuQhOnWB.jpg" alt="HackClub Slovakia" class="hero-logo">
+                <h1>HackClub Slovakia</h1>
+                <div class="hero-slogan" data-en="Learn. Build. Share." data-sk="Učiť sa. Stavať. Zdieľať.">Učiť sa. Stavať. Zdieľať.</div>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary" onclick="showPage('contact')" data-en="Join Us" data-sk="Pridaj sa">Pridaj sa</button>
+                    <button class="btn btn-secondary" onclick="showPage('get-involved')" data-en="Start a Club" data-sk="Založiť klub">Založiť klub</button>
+                    <button class="btn btn-outline" onclick="showPage('events')" data-en="Upcoming Events" data-sk="Nadchádzajúce podujatia">Nadchádzajúce podujatia</button>
+                </div>
+            </div>
+
+            <section>
+                <h2 data-en="Our Mission" data-sk="Naša misia">Naša misia</h2>
+                <p class="intro-text" data-en="HackClub Slovakia is a student-led community that brings together young makers, coders, and innovators across Slovakia. We believe in learning by doing, building real projects, and sharing knowledge with peers. Our clubs provide a welcoming space where students can explore technology, develop their skills, and create amazing things together." data-sk="HackClub Slovakia je študentmi vedená komunita, ktorá spája mladých tvorcov, programátorov a inovátorov po celom Slovensku. Veríme v učenie sa praxou, budovanie skutočných projektov a zdieľanie vedomostí s rovesníkmi. Naše kluby poskytujú prívetivý priestor, kde študenti môžu skúmať technológie, rozvíjať svoje zručnosti a spoločne vytvárať úžasné veci.">HackClub Slovakia je študentmi vedená komunita, ktorá spája mladých tvorcov, programátorov a inovátorov po celom Slovensku. Veríme v učenie sa praxou, budovanie skutočných projektov a zdieľanie vedomostí s rovesníkmi. Naše kluby poskytujú prívetivý priestor, kde študenti môžu skúmať technológie, rozvíjať svoje zručnosti a spoločne vytvárať úžasné veci.</p>
+            </section>
+
+            
+
+            
+        </div>
+
+        <!-- ABOUT PAGE -->
+        <div id="about" class="page-section hidden">
+            <h1 data-en="About HackClub Slovakia" data-sk="O HackClub Slovakia">O HackClub Slovakia</h1>
+            
+            <section>
+                <h2 data-en="Our Story" data-sk="Náš príbeh">Náš príbeh</h2>
+                <p class="intro-text" data-en="HackClub Slovakia was founded in 2023 by a group of passionate students who wanted to create a space where young people could learn coding, build projects, and connect with like-minded peers. What started as a small club in Bratislava has grown into a nationwide network of student-led coding clubs across Slovakia." data-sk="HackClub Slovakia bola založená v roku 2023 skupinou nadšených študentov, ktorí chceli vytvoriť priestor, kde by sa mladí ľudia mohli učiť programovanie, budovať projekty a spájať sa s podobne zmýšľajúcimi rovesníkmi. To, co začalo ako malý klub v Bratislave, sa rozrástlo na celonárodnú sieť študentmi vedených programátorských klubov po celom Slovensku.">HackClub Slovakia bola založená v roku 2023 skupinou nadšených študentov, ktorí chceli vytvoriť priestor, kde by sa mladí ľudia mohli učiť programovanie, budovať projekty a spájať sa s podobne zmýšľajúcimi rovesníkmi. To, čo začalo ako malý klub v Bratislave, sa rozrástlo na celonárodnú sieť študentmi vedených programátorských klubov po celom Slovensku.</p>
+            </section>
+
+            <section>
+                <h2 data-en="Our Values" data-sk="Naše hodnoty">Naše hodnoty</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <h3 data-en="Student-Led" data-sk="Vedené študentmi">Vedené študentmi</h3>
+                        <p data-en="All our clubs are organized and run by students, for students. We believe young people learn best from their peers." data-sk="Všetky naše kluby sú organizované a vedené študentmi pre študentov. Veríme, že mladí ľudia sa najlepšie učia od svojich rovesníkov.">Všetky naše kluby sú organizované a vedené študentmi pre študentov. Veríme, že mladí ľudia sa najlepšie učia od svojich rovesníkov.</p>
+                    </div>
+                    <div class="card">
+                        <h3 data-en="Learn by Doing" data-sk="Učenie praxou">Učenie praxou</h3>
+                        <p data-en="We focus on hands-on projects and real-world applications rather than just theory." data-sk="Zameriavame sa na praktické projekty a aplikácie v reálnom svete, nie len na teóriu.">Zameriavame sa na praktické projekty a aplikácie v reálnom svete, nie len na teóriu.</p>
+                    </div>
+                    <div class="card">
+                        <h3 data-en="Inclusive Community" data-sk="Inkluzívna komunita">Inkluzívna komunita</h3>
+                        <p data-en="Everyone is welcome regardless of experience level. We create a supportive environment for all." data-sk="Každý je vítaný bez ohľadu na úroveň skúseností. Vytvárame podporné prostredie pre všetkých.">Každý je vítaný bez ohľadu na úroveň skúseností. Vytvárame podporné prostredie pre všetkých.</p>
+                    </div>
+                    <div class="card">
+                        <h3 data-en="Open Source" data-sk="Open Source">Open Source</h3>
+                        <p data-en="We believe in sharing knowledge and code openly. All our projects are open source." data-sk="Veríme v otvorené zdieľanie vedomostí a kódu. Všetky naše projekty sú open source.">Veríme v otvorené zdieľanie vedomostí a kódu. Všetky naše projekty sú open source.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 data-en="Code of Conduct" data-sk="Kódex správania">Kódex správania</h2>
+                <div class="highlight-section">
+                    <p data-en="HackClub Slovakia is committed to providing a welcoming and harassment-free experience for everyone. We expect all members to:" data-sk="HackClub Slovakia sa zaväzuje poskytovať prívetivé prostredie bez obťažovania pre každého. Očakávame, že všetci členovia budú:">HackClub Slovakia sa zaväzuje poskytovať prívetivé prostredie bez obťažovania pre každého. Očakávame, že všetci členovia budú:</p>
+                    <ul style="margin-left: 2rem; margin-top: 1rem; line-height: 2;">
+                        <li data-en="Be respectful and inclusive of all participants" data-sk="Byť úctiví a inkluzívni voči všetkým účastníkom">Byť úctiví a inkluzívni voči všetkým účastníkom</li>
+                        <li data-en="Communicate constructively and professionally" data-sk="Komunikovať konštruktívne a profesionálne">Komunikovať konštruktívne a profesionálne</li>
+                        <li data-en="Help create a safe and positive environment" data-sk="Pomáhať vytvárať bezpečné a pozitívne prostredie">Pomáhať vytvárať bezpečné a pozitívne prostredie</li>
+                        <li data-en="Support and encourage fellow members" data-sk="Podporovať a povzbudzovať ostatných členov">Podporovať a povzbudzovať ostatných členov</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2 data-en="Milestones" data-sk="Míľniky">Míľniky</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <h3>2025</h3>
+                        <p data-en="Founded" data-sk="Založené">Založené</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- CHAPTERS PAGE -->
+        <div id="chapters" class="page-section hidden">
+            <h1 data-en="Our Chapters" data-sk="Naše pobočky">Naše pobočky</h1>
+            <p class="intro-text" data-en="Find a HackClub near you or start your own! Our chapters meet regularly to work on projects, learn new skills, and build community." data-sk="Nájdite HackClub vo svojom okolí alebo založte vlastný! Naše pobočky sa pravidelne stretávajú, aby pracovali na projektoch, učili sa nové zručnosti a budovali komunitu.">Nájdite HackClub vo svojom okolí alebo založte vlastný! Naše pobočky sa pravidelne stretávajú, aby pracovali na projektoch, učili sa nové zručnosti a budovali komunitu.</p>
+
+            <input type="text" class="search-box" placeholder="Search for a city..." data-en-placeholder="Search for a city..." data-sk-placeholder="Hľadať mesto..." onkeyup="searchChapters(this.value)">
+
+            <section id="chapters-list">
+                <div class="chapter-card">
+                    <div class="chapter-header">
+                        <div>
+                            <div class="chapter-city">Prešov</div>
+                            <p data-en="Organizer: Tomáš Varga" data-sk="Organizátor: Tomáš Varga">Organizátor: Tomáš Varga</p>
+                        </div>
+                    </div>
+                    <p data-en="Meets every Friday at 15:30 at Gymnázium Pavla Jozefa Šafárika" data-sk="Stretnutia každý piatok o 15:30 v Gymnáziu Pavla Jozefa Šafárika">Stretnutia každý piatok o 15:30 v Gymnáziu Pavla Jozefa Šafárika</p>
+                    <p style="margin-top: 0.5rem;" data-en="Contact: presov@hackclub.sk" data-sk="Kontakt: presov@hackclub.sk">Kontakt: presov@hackclub.sk</p>
+                </div>
+            </section>
+
+            <section style="margin-top: 3rem;">
+                <h2 data-en="Start Your Own Chapter" data-sk="Založte vlastnú pobočku">Založte vlastnú pobočku</h2>
+                <div class="highlight-section">
+                    <p data-en="Want to bring HackClub to your school? Fill out the form below and we'll help you get started!" data-sk="Chcete priniesť HackClub do svojej školy? Vyplňte formulár nižšie a pomôžeme vám začať!">Chcete priniesť HackClub do svojej školy? Vyplňte formulár nižšie a pomôžeme vám začať!</p>
+                    <form style="margin-top: 2rem;" onsubmit="event.preventDefault(); alert(currentLang === 'en' ? 'Thank you! We will contact you soon.' : 'Ďakujeme! Čoskoro vás budeme kontaktovať.');">
+                        <div class="form-group">
+                            <label data-en="Your Name" data-sk="Vaše meno">Vaše meno</label>
+                            <input type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-en="Email" data-sk="Email">Email</label>
+                            <input type="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-en="School Name" data-sk="Názov školy">Názov školy</label>
+                            <input type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-en="City" data-sk="Mesto">Mesto</label>
+                            <input type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-en="Tell us about your plans" data-sk="Povedzte nám o svojich plánoch">Povedzte nám o svojich plánoch</label>
+                            <textarea required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" data-en="Submit Application" data-sk="Odoslať prihlášku">Odoslať prihlášku</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+
+        <!-- EVENTS PAGE -->
+        <div id="events" class="page-section hidden">
+            <h1 data-en="Events" data-sk="Podujatia">Podujatia</h1>
+            <p class="intro-text" data-en="Join us for workshops, hackathons, talks, and more! All events are free and open to students of all skill levels." data-sk="Pridajte sa k nám na workshopy, hackathony, prednášky a ďalšie! Všetky podujatia sú bezplatné a otvorené pre študentov všetkých úrovní.">Pridajte sa k nám na workshopy, hackathony, prednášky a ďalšie! Všetky podujatia sú bezplatné a otvorené pre študentov všetkých úrovní.</p>
+
+            <div class="event-filters">
+                <button class="filter-btn active" onclick="filterEvents('all')" data-en="All Events" data-sk="Všetky podujatia">Všetky podujatia</button>
+                <button class="filter-btn" onclick="filterEvents('upcoming')" data-en="Upcoming" data-sk="Nadchádzajúce">Nadchádzajúce</button>
+                <button class="filter-btn" onclick="filterEvents('past')" data-en="Past" data-sk="Minulé">Minulé</button>
+            </div>
+
+            <section id="events-list">
+                <div class="highlight-section" style="text-align: center; padding: 3rem;">
+                    <h3 data-en="Nothing yet, you can help!" data-sk="Zatiaľ nič, môžeš pomôcť!">Zatiaľ nič, môžeš pomôcť!</h3>
+                    <p data-en="Be the first to organize an event with the community!" data-sk="Buď prvý, kto zorganizuje podujatie s komunitou!">Buď prvý, kto zorganizuje podujatie s komunitou!</p>
+                    <button class="btn btn-primary" onclick="showPage('contact')" style="margin-top: 1.5rem;" data-en="Get in Touch" data-sk="Kontaktujte nás">Kontaktujte nás</button>
+                </div>
+            </section>
+        </div>
+
+        <!-- PROJECTS PAGE -->
+        <div id="projects" class="page-section hidden">
+            <h1 data-en="Projects Gallery" data-sk="Galéria projektov">Galéria projektov</h1>
+            <p class="intro-text" data-en="We're just getting started! Check back soon to see amazing projects built by our community members." data-sk="Práve začíname! Čoskoro sa vráťte a pozrite si úžasné projekty vytvorené členmi našej komunity.">Práve začíname! Čoskoro sa vráťte a pozrite si úžasné projekty vytvorené členmi našej komunity.</p>
+
+            
+            <div class="highlight-section" style="text-align: center; padding: 3rem;">
+                <h3 data-en="Nothing yet, you can help!" data-sk="Zatiaľ nič, môžeš pomôcť!">Zatiaľ nič, môžeš pomôcť!</h3>
+                <p data-en="Be the first to share your project with the community!" data-sk="Buď prvý, kto zdieľa svoj projekt s komunitou!">Buď prvý, kto zdieľa svoj projekt s komunitou!</p>
+                <button class="btn btn-primary" onclick="showPage('contact')" style="margin-top: 1.5rem;" data-en="Get in Touch" data-sk="Kontaktujte nás">Kontaktujte nás</button>
+            </div>
+        </div>
+
+        <!-- GET INVOLVED PAGE -->
+        <div id="get-involved" class="page-section hidden">
+            <h1 data-en="Get Involved" data-sk="Zapoj sa">Zapoj sa</h1>
+            <p class="intro-text" data-en="There are many ways to get involved with HackClub Slovakia! Whether you're a student wanting to learn, an experienced coder ready to mentor, or a company interested in sponsorship, we'd love to have you join our community." data-sk="Existuje mnoho spôsobov, ako sa zapojiť do HackClub Slovakia! Či už ste študent, ktorý sa chce učiť, skúsený programátor pripravený mentorovat, alebo spoločnosť zainteresovaná v sponzorstve, radi by sme vás privítali v našej komunite.">Existuje mnoho spôsobov, ako sa zapojiť do HackClub Slovakia! Či už ste študent, ktorý sa chce učiť, skúsený programátor pripravený mentorovat, alebo spoločnosť zainteresovaná v sponzorstve, radi by sme vás privítali v našej komunite.</p>
+
+            <section>
+                <h2 data-en="For Students" data-sk="Pre študentov">Pre študentov</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <h3 data-en="Join a Club" data-sk="Pridaj sa do klubu">Pridaj sa do klubu</h3>
+                        <p data-en="Find a HackClub chapter near you and start attending meetings. No experience required!" data-sk="Nájdite pobočku HackClub vo svojom okolí a začnite navštevovať stretnutia. Nie sú potrebné žiadne skúsenosti!">Nájdite pobočku HackClub vo svojom okolí a začnite navštevovať stretnutia. Nie sú potrebné žiadne skúsenosti!</p>
+                        <button class="btn btn-primary" onclick="showPage('chapters')" data-en="Find a Chapter" data-sk="Nájsť pobočku">Nájsť pobočku</button>
+                    </div>
+                    <div class="card">
+                        <h3 data-en="Start a Club" data-sk="Založiť klub">Založiť klub</h3>
+                        <p data-en="Bring HackClub to your school! We'll provide resources, guidance, and support." data-sk="Prineste HackClub do svojej školy! Poskytneme vám zdroje, vedenie a podporu.">Prineste HackClub do svojej školy! Poskytneme vám zdroje, vedenie a podporu.</p>
+                        <button class="btn btn-primary" onclick="showPage('chapters')" data-en="Start a Chapter" data-sk="Založiť pobočku">Založiť pobočku</button>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 data-en="How to Start a Club" data-sk="Ako založiť klub">Ako založiť klub</h2>
+                <div class="highlight-section">
+                    <ol style="margin-left: 2rem; line-height: 2;">
+                        <li data-en="Fill out the application form on our Chapters page" data-sk="Vyplňte prihlášku na našej stránke Pobočky">Vyplňte prihlášku na našej stránke Pobočky</li>
+                        <li data-en="Get approval from your school administration" data-sk="Získajte súhlas od vedenia školy">Získajte súhlas od vedenia školy</li>
+                        <li data-en="Attend our online organizer training session" data-sk="Zúčastnite sa našej online školiacej relácie pre organizátorov">Zúčastnite sa našej online školiacej relácie pre organizátorov</li>
+                        <li data-en="Recruit members and schedule your first meeting" data-sk="Získajte členov a naplánujte svoje prvé stretnutie">Získajte členov a naplánujte svoje prvé stretnutie</li>
+                        <li data-en="Start building amazing projects together!" data-sk="Začnite spoločne vytvárať úžasné projekty!">Začnite spoločne vytvárať úžasné projekty!</li>
+                    </ol>
+                </div>
+            </section>
+
+            <section>
+                <h2 data-en="For Mentors & Volunteers" data-sk="Pre mentorov a dobrovoľníkov">Pre mentorov a dobrovoľníkov</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <h3 data-en="Become a Mentor" data-sk="Staňte sa mentorom">Staňte sa mentorom</h3>
+                        <p data-en="Share your knowledge and help students learn. Mentors guide workshops and provide technical support." data-sk="Zdieľajte svoje vedomosti a pomôžte študentom učiť sa. Mentori vedú workshopy a poskytujú technickú podporu.">Zdieľajte svoje vedomosti a pomôžte študentom učiť sa. Mentori vedú workshopy a poskytujú technickú podporu.</p>
+                    </div>
+                    <div class="card">
+                        <h3 data-en="Lead a Workshop" data-sk="Veďte workshop">Veďte workshop</h3>
+                        <p data-en="Have expertise in a specific technology? Lead a workshop and teach students something new!" data-sk="Máte odborné znalosti v konkrétnej technológii? Veďte workshop a naučte študentov niečo nové!">Máte odborné znalosti v konkrétnej technológii? Veďte workshop a naučte študentov niečo nové!</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 data-en="For Companies & Sponsors" data-sk="Pre spoločnosti a sponzorov">Pre spoločnosti a sponzorov</h2>
+                <div class="highlight-section">
+                    <p data-en="Support the next generation of Slovak tech talent! Sponsorship opportunities include:" data-sk="Podporte ďalšiu generáciu slovenských technologických talentov! Možnosti sponzorstva zahŕňajú:">Podporte ďalšiu generáciu slovenských technologických talentov! Možnosti sponzorstva zahŕňajú:</p>
+                    <ul style="margin-left: 2rem; margin-top: 1rem; line-height: 2;">
+                        <li data-en="Event sponsorship (hackathons, workshops)" data-sk="Sponzorstvo podujatí (hackathony, workshopy)">Sponzorstvo podujatí (hackathony, workshopy)</li>
+                        <li data-en="Equipment and resource donations" data-sk="Dary zariadení a zdrojov">Dary zariadení a zdrojov</li>
+                        <li data-en="Mentorship and technical talks" data-sk="Mentorstvo a technické prednášky">Mentorstvo a technické prednášky</li>
+                        <li data-en="Internship and job opportunities for members" data-sk="Stáže a pracovné príležitosti pre členov">Stáže a pracovné príležitosti pre členov</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="showPage('contact')" style="margin-top: 2rem;" data-en="Contact Us About Sponsorship" data-sk="Kontaktujte nás ohľadom sponzorstva">Kontaktujte nás ohľadom sponzorstva</button>
+                </div>
+            </section>
+        </div>
+
+        <!-- RESOURCES PAGE -->
+        <div id="resources" class="page-section hidden">
+            <h1 data-en="Resources" data-sk="Zdroje">Zdroje</h1>
+            <p class="intro-text" data-en="Free learning materials, workshop guides, and project templates to help you on your coding journey." data-sk="Bezplatné vzdelávacie materiály, návody na workshopy a šablóny projektov, ktoré vám pomôžu na vašej ceste programovania.">Bezplatné vzdelávacie materiály, návody na workshopy a šablóny projektov, ktoré vám pomôžu na vašej ceste programovania.</p>
+
+            <section>
+                <h2 data-en="Workshop Guides" data-sk="Návody na workshopy">Návody na workshopy</h2>
+                <div class="resource-list">
+                    <div class="resource-item">
+                        <div>
+                            <h3 data-en="Introduction to HTML & CSS" data-sk="Úvod do HTML a CSS">Úvod do HTML a CSS</h3>
+                            <p data-en="Build your first webpage from scratch" data-sk="Vytvorte svoju prvú webovú stránku od nuly">Vytvorte svoju prvú webovú stránku od nuly</p>
+                        </div>
+                        <div style="display: flex; gap: 1rem; align-items: center;">
+                            <span class="resource-tag" data-en="Web" data-sk="Web">Web</span>
+                            <a href="#" class="btn btn-primary" data-en="Download" data-sk="Stiahnuť">Stiahnuť</a>
+                        </div>
+                    </div>
+                    <div class="resource-item">
+                        <div>
+                            <h3 data-en="JavaScript Basics" data-sk="Základy JavaScriptu">Základy JavaScriptu</h3>
+                            <p data-en="Learn programming fundamentals with JavaScript" data-sk="Naučte sa základy programovania s JavaScriptom">Naučte sa základy programovania s JavaScriptom</p>
+                        </div>
+                        <div style="display: flex; gap: 1rem; align-items: center;">
+                            <span class="resource-tag" data-en="Web" data-sk="Web">Web</span>
+                            <a href="#" class="btn btn-primary" data-en="Download" data-sk="Stiahnuť">Stiahnuť</a>
+                        </div>
+                    </div>
+                    <div class="resource-item">
+                        <div>
+                            <h3 data-en="Python for Beginners" data-sk="Python pre začiatočníkov">Python pre začiatočníkov</h3>
+                            <p data-en="Start your programming journey with Python" data-sk="Začnite svoju programátorskú cestu s Pythonom">Začnite svoju programátorskú cestu s Pythonom</p>
+                        </div>
+                        <div style="display: flex; gap: 1rem; align-items: center;">
+                            <span class="resource-tag" data-en="Programming" data-sk="Programovanie">Programovanie</span>
+                            <a href="#" class="btn btn-primary" data-en="Download" data-sk="Stiahnuť">Stiahnuť</a>
+                        </div>
+                    </div>
+                    <div class="resource-item">
+                        <div>
+                            <h3 data-en="React Workshop" data-sk="Workshop React">Workshop React</h3>
+                            <p data-en="Build modern web applications with React" data-sk="Vytvárajte moderné webové aplikácie s Reactom">Vytvárajte moderné webové aplikácie s Reactom</p>
+                        </div>
+                        <div style="display: flex; gap: 1rem; align-items: center;">
+                            <span class="resource-tag" data-en="Web" data-sk="Web">Web</span>
+                            <a href="#" class="btn btn-primary" data-en="Download" data-sk="Stiahnuť">Stiahnuť</a>
+                        </div>
+                    </div>
+                    <div class="resource-item">
+                        <div>
+                            <h3 data-en="Arduino Robotics" data-sk="Robotika s Arduinom">Robotika s Arduinom</h3>
+                            <p data-en="Create your first robot with Arduino" data-sk="Vytvorte svojho prvého robota s Arduinom">Vytvorte svojho prvého robota s Arduinom</p>
+                        </div>
+                        <div style="display: flex; gap: 1rem; align-items: center;">
+                            <span class="resource-tag" data-en="Robotics" data-sk="Robotika">Robotika</span>
+                            <a href="#" class="btn btn-primary" data-en="Download" data-sk="Stiahnuť">Stiahnuť</a>
+                        </div>
+                    </div>
+                    <div class="resource-item">
+                        <div>
+                            <h3 data-en="Machine Learning Basics" data-sk="Základy strojového učenia">Základy strojového učenia</h3>
+                            <p data-en="Introduction to AI and machine learning concepts" data-sk="Úvod do konceptov AI a strojového učenia">Úvod do konceptov AI a strojového učenia</p>
+                        </div>
+                        <div style="display: flex; gap: 1rem; align-items: center;">
+                            <span class="resource-tag" data-en="AI" data-sk="AI">AI</span>
+                            <a href="#" class="btn btn-primary" data-en="Download" data-sk="Stiahnuť">Stiahnuť</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 data-en="Useful Links" data-sk="Užitočné odkazy">Užitočné odkazy</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <h3 data-en="Online Coding Platforms" data-sk="Online programovacie platformy">Online programovacie platformy</h3>
+                        <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+                            <li><a href="https://www.codecademy.com" target="_blank" style="color: var(--primary-red);">Codecademy</a></li>
+                            <li><a href="https://www.freecodecamp.org" target="_blank" style="color: var(--primary-red);">freeCodeCamp</a></li>
+                            <li><a href="https://www.khanacademy.org" target="_blank" style="color: var(--primary-red);">Khan Academy</a></li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3 data-en="Development Tools" data-sk="Vývojové nástroje">Vývojové nástroje</h3>
+                        <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+                            <li><a href="https://code.visualstudio.com" target="_blank" style="color: var(--primary-red);">VS Code</a></li>
+                            <li><a href="https://github.com" target="_blank" style="color: var(--primary-red);">GitHub</a></li>
+                            <li><a href="https://replit.com" target="_blank" style="color: var(--primary-red);">Replit</a></li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3 data-en="Design Resources" data-sk="Dizajnové zdroje">Dizajnové zdroje</h3>
+                        <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+                            <li><a href="https://www.figma.com" target="_blank" style="color: var(--primary-red);">Figma</a></li>
+                            <li><a href="https://unsplash.com" target="_blank" style="color: var(--primary-red);">Unsplash</a></li>
+                            <li><a href="https://fonts.google.com" target="_blank" style="color: var(--primary-red);">Google Fonts</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- CONTACT PAGE -->
+        <div id="contact" class="page-section hidden">
+            <h1 data-en="Contact & Join" data-sk="Kontakt a pripojenie">Kontakt a pripojenie</h1>
+            <p class="intro-text" data-en="Have questions? Want to get involved? We'd love to hear from you!" data-sk="Máte otázky? Chcete sa zapojiť? Radi by sme od vás počuli!">Máte otázky? Chcete sa zapojiť? Radi by sme od vás počuli!</p>
+
+            <section>
+                <div class="card-grid">
+                    <div class="card">
+                        <h3 data-en="Join Our Slack" data-sk="Pridajte sa na Slack">Pridajte sa na Slack</h3>
+                        <p data-en="Connect with our community, ask questions, and collaborate on projects." data-sk="Spojte sa s našou komunitou, pýtajte sa otázky a spolupracujte na projektoch.">Spojte sa s našou komunitou, pýtajte sa otázky a spolupracujte na projektoch.</p>
+                        <button class="btn btn-primary" style="margin-top: 1rem;" data-en="Join Slack" data-sk="Pridať sa na Slack">Pridať sa na Slack</button>
+                    </div>
+                    <div class="card">
+                        <h3 data-en="Follow Us" data-sk="Sledujte nás">Sledujte nás</h3>
+                        <p data-en="Stay updated with our latest events and projects on social media." data-sk="Zostaňte informovaní o našich najnovších podujatiach a projektoch na sociálnych sieťach.">Zostaňte informovaní o našich najnovších podujatiach a projektoch na sociálnych sieťach.</p>
+                        <div class="social-links" style="margin-top: 1rem;">
+                            <a href="#" title="GitHub">
+                                <svg width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                            </a>
+                            <a href="#" title="Instagram">
+                                <svg width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                            </a>
+                            <a href="#" title="YouTube">
+                                <svg width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 data-en="Send Us a Message" data-sk="Pošlite nám správu">Pošlite nám správu</h2>
+                <div class="highlight-section">
+                    <form onsubmit="event.preventDefault(); alert(currentLang === 'en' ? 'Thank you for your message! We will get back to you soon.' : 'Ďakujeme za vašu správu! Čoskoro sa vám ozveme.');">
+                        <div class="form-group">
+                            <label data-en="Name" data-sk="Meno">Meno</label>
+                            <input type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-en="Email" data-sk="Email">Email</label>
+                            <input type="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-en="Subject" data-sk="Predmet">Predmet</label>
+                            <select required>
+                                <option value="" data-en="Select a topic..." data-sk="Vyberte tému...">Vyberte tému...</option>
+                                <option value="general" data-en="General Inquiry" data-sk="Všeobecný dotaz">Všeobecný dotaz</option>
+                                <option value="join" data-en="Joining a Club" data-sk="Pripojenie ku klubu">Pripojenie ku klubu</option>
+                                <option value="start" data-en="Starting a Club" data-sk="Založenie klubu">Založenie klubu</option>
+                                <option value="sponsor" data-en="Sponsorship" data-sk="Sponzorstvo">Sponzorstvo</option>
+                                <option value="mentor" data-en="Mentorship" data-sk="Mentorstvo">Mentorstvo</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label data-en="Message" data-sk="Správa">Správa</label>
+                            <textarea required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" data-en="Send Message" data-sk="Odoslať správu">Odoslať správu</button>
+                    </form>
+                </div>
+            </section>
+
+            <section>
+                <h2 data-en="Newsletter" data-sk="Newsletter">Newsletter</h2>
+                <div class="highlight-section">
+                    <p data-en="Stay updated with our latest events, workshops, and opportunities. Subscribe to our newsletter!" data-sk="Zostaňte informovaní o našich najnovších podujatiach, workshopoch a príležitostiach. Prihláste sa na odber nášho newslettera!">Zostaňte informovaní o našich najnovších podujatiach, workshopoch a príležitostiach. Prihláste sa na odber nášho newslettera!</p>
+                    <form style="margin-top: 2rem; display: flex; gap: 1rem;" onsubmit="event.preventDefault(); alert(currentLang === 'en' ? 'Thank you for subscribing!' : 'Ďakujeme za prihlásenie!');">
+                        <input type="email" placeholder="your@email.com" required style="flex: 1;" data-en-placeholder="your@email.com" data-sk-placeholder="vas@email.sk">
+                        <button type="submit" class="btn btn-primary" data-en="Subscribe" data-sk="Prihlásiť sa">Prihlásiť sa</button>
+                    </form>
+                </div>
+            </section>
+
+            <section>
+                <h2 data-en="Direct Contact" data-sk="Priamy kontakt">Priamy kontakt</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <h3 data-en="Email" data-sk="Email">Email</h3>
+                        <p>info@hackclub.sk</p>
+                    </div>
+                    <div class="card">
+                        <h3 data-en="General Inquiries" data-sk="Všeobecné otázky">Všeobecné otázky</h3>
+                        <p>hello@hackclub.sk</p>
+                    </div>
+                    <div class="card">
+                        <h3 data-en="Sponsorship" data-sk="Sponzorstvo">Sponzorstvo</h3>
+                        <p>sponsors@hackclub.sk</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4 data-en="Quick Links" data-sk="Rýchle odkazy">Rýchle odkazy</h4>
+                    <a onclick="showPage('home')" data-en="Home" data-sk="Domov">Domov</a>
+                    <a onclick="showPage('about')" data-en="About" data-sk="O nás">O nás</a>
+                    <a onclick="showPage('chapters')" data-en="Chapters" data-sk="Pobočky">Pobočky</a>
+                    <a onclick="showPage('events')" data-en="Events" data-sk="Podujatia">Podujatia</a>
+                </div>
+                <div class="footer-section">
+                    <h4 data-en="Community" data-sk="Komunita">Komunita</h4>
+                    <a onclick="showPage('projects')" data-en="Projects" data-sk="Projekty">Projekty</a>
+                    <a onclick="showPage('get-involved')" data-en="Get Involved" data-sk="Zapoj sa">Zapoj sa</a>
+                    <a onclick="showPage('resources')" data-en="Resources" data-sk="Zdroje">Zdroje</a>
+                    <a onclick="showPage('contact')" data-en="Contact" data-sk="Kontakt">Kontakt</a>
+                </div>
+                <div class="footer-section">
+                    <h4 data-en="Connect" data-sk="Spojenie">Spojenie</h4>
+                    <a href="#" data-en="Slack" data-sk="Slack">Slack</a>
+                    <a href="#" data-en="GitHub" data-sk="GitHub">GitHub</a>
+                    <a href="#" data-en="Instagram" data-sk="Instagram">Instagram</a>
+                    <a href="#" data-en="YouTube" data-sk="YouTube">YouTube</a>
+                </div>
+                <div class="footer-section">
+                    <h4 data-en="Language" data-sk="Jazyk">Jazyk</h4>
+                    <button class="lang-toggle" onclick="toggleLanguage()" style="width: 100%;">
+                        <span id="footer-lang-text">🇬🇧 EN</span>
+                    </button>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 HackClub Slovakia. <span data-en="All rights reserved." data-sk="Všetky práva vyhradené.">Všetky práva vyhradené.</span></p>
+                <p style="margin-top: 0.5rem;" data-en="Made with ❤️ by students, for students." data-sk="Vytvorené s ❤️ študentmi pre študentov.">Vytvorené s ❤️ študentmi pre študentov.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentLang = 'sk';
+
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page-section').forEach(page => {
+                page.classList.add('hidden');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.remove('hidden');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'sk' ? 'en' : 'sk';
+            
+            // Update all elements with language attributes
+            document.querySelectorAll('[data-en]').forEach(element => {
+                const text = element.getAttribute(`data-${currentLang}`);
+                if (text) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = text;
+                    } else {
+                        element.textContent = text;
+                    }
+                }
+            });
+
+            // Update placeholders
+            document.querySelectorAll('[data-en-placeholder]').forEach(element => {
+                const placeholder = element.getAttribute(`data-${currentLang}-placeholder`);
+                if (placeholder) {
+                    element.placeholder = placeholder;
+                }
+            });
+
+            // Update select options
+            document.querySelectorAll('option[data-en]').forEach(option => {
+                const text = option.getAttribute(`data-${currentLang}`);
+                if (text) {
+                    option.textContent = text;
+                }
+            });
+            
+            // Update language toggle buttons
+            const langButtons = document.querySelectorAll('.lang-toggle');
+            langButtons.forEach(btn => {
+                btn.textContent = currentLang === 'sk' ? '🇬🇧 EN' : '🇸🇰 SK';
+            });
+            
+            document.getElementById('footer-lang-text').textContent = currentLang === 'sk' ? '🇬🇧 EN' : '🇸🇰 SK';
+        }
+
+        function filterEvents(status) {
+            const events = document.querySelectorAll('.event-card');
+            const buttons = document.querySelectorAll('.event-filters .filter-btn');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            events.forEach(eventCard => {
+                if (status === 'all') {
+                    eventCard.style.display = 'block';
+                } else {
+                    eventCard.style.display = eventCard.dataset.status === status ? 'block' : 'none';
+                }
+            });
+        }
+
+        function filterProjects(category) {
+            const projects = document.querySelectorAll('.project-card');
+            const buttons = document.querySelectorAll('#projects .filter-btn');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            projects.forEach(project => {
+                if (category === 'all') {
+                    project.style.display = 'block';
+                } else {
+                    project.style.display = project.dataset.category === category ? 'block' : 'none';
+                }
+            });
+        }
+
+        function searchChapters(query) {
+            const chapters = document.querySelectorAll('.chapter-card');
+            const searchTerm = query.toLowerCase();
+            
+            chapters.forEach(chapter => {
+                const city = chapter.querySelector('.chapter-city').textContent.toLowerCase();
+                chapter.style.display = city.includes(searchTerm) ? 'block' : 'none';
+            });
+        }
+
+        // Initialize - show home page
+        showPage('home');
+    </script>
+</body>
+</html>
